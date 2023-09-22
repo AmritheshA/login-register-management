@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+          crossorigin="anonymous">
+    <style>
+        /* Custom CSS */
+        body {
+            background-image: url('https://www.ibm.com/content/dam/connectedassets-adobe-cms/worldwide-content/other/ul/g/60/67/6067fb8d-a935-4e35-945a0d14b1a256ac.component.xl.ts=1678816261889.png/content/adobe-cms/us/en/topics/mobile-application-development/_jcr_content/root/leadspace');
+            background-size: cover;
+        }
+
+        .card-custom {
+            border-radius: 15px;
+        }
+
+        .gradient-custom-3 {
+            background: #84fab0;
+            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+            background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+        }
+
+        .gradient-custom-4 {
+            background: #84fab0;
+            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+            background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+        }
+    </style>
+</head>
+<body>
+<div class="container vh-100">
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card card-custom gradient-custom-3">
+                <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Update User</h2>
+
+                        <form th:action="@{/adminPage/edited}"  method="post">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control form-control-lg" id="name" name="name" th:value="${name}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control form-control-lg" id="email" name="email" th:value="${email}"  required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control form-control-lg" id="password" name="password" th:placeholder="${password}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Role</label>
+                            <select class="form-control form-control-lg" id="role" name="role" th:value="${role}" required>
+                                <option value="" disabled selected>Select a Role</option>
+                                <option value="USER">User</option>
+                                <option value="ADMIN">Admin</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success btn-lg gradient-custom-4 text-body">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

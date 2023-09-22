@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered User Table</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add custom CSS here -->
+    <style>
+        /* Customize the overall background */
+        body {
+            background-color: #f0f0f0; /* Change this to your preferred background color */
+        }
+
+        /* Customize the table container background */
+        .center-table-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Center vertically */
+        }
+
+        .center-table {
+            background-color: white; /* Change this to the background color you desire */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        /* Customize the table styles here */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        table thead {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tbody tr:hover {
+            background-color: #A9D0F5;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        /* Add a subtle border to table cells */
+        table td {
+            border: 1px solid #e0e0e0;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+
+    <div class="center-table-container">
+        <div class="center-table table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${user.getId()}"></td>
+                    <td th:text="${user.getName()}"></td>
+                    <td th:text="${user.getPassword()}"></td>
+                    <td th:text="${user.getEmail()}"></td>
+                    <td th:text="${user.getRole()}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="centered">
+                <a href="/adminPage" class="btn btn-primary mb-3">Home</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Add Bootstrap JS and jQuery scripts here -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

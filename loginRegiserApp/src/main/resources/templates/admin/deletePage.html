@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Users</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for the table */
+        body {
+            background-color: #f4f4f4;
+        }
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>User Table</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Edit</th> <!-- Add Edit column -->
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over the list and populate the table rows -->
+        <tr th:each="user, iterStat : ${allDetails}">
+            <td th:text="${user.id}"></td>
+            <!-- Name -->
+            <td th:text="${user.name}"></td>
+            <!-- Password -->
+            <td th:text="${user.password}"></td>
+            <!-- Email -->
+            <td th:text="${user.email}"></td>
+            <!-- Role -->
+            <td th:text="${user.role}"></td>
+            <!-- Edit button for each row except the first one -->
+            <td th:if="${!iterStat.first}">
+                <form th:action="@{/adminPage/deleted}"  method="post">
+                    <input type="hidden" name="userId" th:value="${user.id}"/>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <div class="centered">
+        <a href="/adminPage" class="btn btn-primary mb-3">Home</a>
+    </div>
+</div>
+
+<!-- Add Bootstrap JS scripts if needed -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
